@@ -15,34 +15,35 @@ message(${My\ Variable})
 
 # Variables can be list.
 #
-# Inside the list, semicolons are used to separate items. But they're not displayed when the list is printed by
-# `message()`. Be ware to use semicolons inside variables!
+# Inside the list, semicolons are used to separate items. But they're not
+# displayed when the list is printed by `message()`. Be ware to use semicolons
+# inside variables!
 set(MyList "Item1" "Item2" "Item3")
 message("MyList: " ${MyList})
 foreach(item ${MyList})
-    message(${item})
+  message(${item})
 endforeach()
 
 # Equivalent to the previous one.
 set(MySemicolonSeparatedList Item1;Item2;Item3)
 message("MySemicolonSeparatedList: " ${MySemicolonSeparatedList})
 foreach(item ${MySemicolonSeparatedList})
-    message(${item})
+  message(${item})
 endforeach()
 
 # Variables can be unset
 set(ExistVariable "Exist")
 unset(ExistVariable)
 if(DEFINED ${ExistVariable})
-    message(${ExistVariable})
+  message(${ExistVariable})
 else()
-    message("ExistVariable is not defined")
+  message("ExistVariable is not defined")
 endif()
 
 # Read environment variables
 message($ENV{PATH})
 if(DEFINED $ENV{CXX})
-    message("CXX: " $ENV{CXX})
+  message("CXX: " $ENV{CXX})
 else()
-    message("CXX is not defined")
+  message("CXX is not defined")
 endif()
