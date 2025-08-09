@@ -37,6 +37,18 @@ else()
   message("numberVariable NOT STREQUAL 114")
 endif()
 
+# `foreach` loops
+#
+# Allowed form:
+#
+# 1. foreach(<loop_var> <items>)
+# 2. foreach(<loop_var> RANGE <start> <stop> [<step>])
+# 3. foreach(<loop_var> RANGE <stop>)
+# 4. foreach(<loop_var> IN [LISTS [<lists>]] [ITEMS [<items>]])
+# 5. foreach(<loop_var>... IN ZIP_LISTS <lists>)
+#
+# The `foreach(<loop_var> IN LISTS A)` is equivalent to `foreach(<loop_var> IN ITEMS ${A})`.
+
 # RANGE operator
 foreach(item RANGE 5)
   message("item: ${item}")
@@ -53,10 +65,7 @@ message("=================")
 # (additional) ITEMS operator
 #
 # Append some extra items to the loop range.
-foreach(
-  item IN
-  LISTS listVariable
-  ITEMS 6 7 8 9 10)
+foreach(item IN LISTS listVariable ITEMS 6 7 8 9 10)
   message("additional item: ${item}")
 endforeach()
 message("=================")
